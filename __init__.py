@@ -16,10 +16,7 @@
 
 # Converted for use with Picard v3 by Bob Swift
 
-from typing import (
-    Generator,
-    Optional,
-)
+from collections.abc import Generator
 
 from picard.plugin3.api import (
     Metadata,
@@ -44,7 +41,7 @@ def _iterate_instruments(instrument_list: str) -> Generator[str, None, None]:
         yield instrument
 
 
-def _strip_instrument_prefixes(instrument: str) -> Optional[str]:
+def _strip_instrument_prefixes(instrument: str) -> str | None:
     """Returns the instrument name without qualifying prefixes, or None.
 
     Args:
@@ -68,7 +65,9 @@ def _strip_instrument_prefixes(instrument: str) -> Optional[str]:
     return None
 
 
-def add_instruments(api: PluginApi, _track: Track, metadata: Metadata, _track_node: dict, _release_node: dict | None = None):
+def add_instruments(
+    api: PluginApi, _track: Track, metadata: Metadata, _track_node: dict, _release_node: dict | None = None
+):
     """Adds a multi-value variable listing the instruments and vocals from the performer:* tags.
 
     Args:
@@ -84,7 +83,7 @@ def add_instruments(api: PluginApi, _track: Track, metadata: Metadata, _track_no
         if not key.startswith(key_prefix):
             continue
         try:
-            for instrument in _iterate_instruments(key[len(key_prefix):]):
+            for instrument in _iterate_instruments(key[len(key_prefix) :]):
                 instrument = _strip_instrument_prefixes(instrument)
                 if instrument:
                     instruments.add(instrument)
@@ -102,9 +101,7 @@ def enable(api: PluginApi):
         name="_instruments",
         documentation=api.tr(
             "variable.instruments",
-            (
-                "All track instruments and vocals from the `performer:*` tags as a multi-value variable."
-            )
+            "All track instruments and vocals from the `performer:*` tags as a multi-value variable.",
         ),
         is_multi_value=True,
         is_from_mb=True,
