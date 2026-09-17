@@ -1,0 +1,12 @@
+uuid = "96c25fb6-2eba-42b1-b7e7-992416eb1e91"
+name = "Instruments"
+authors = ["David Mandelberg"]
+maintainers = ["MusicBrainz Picard Team"]
+description = "This plugin adds a multi-valued variable (~instruments) containing all the instruments (including vocals), for use in scripts."
+api = ['3.0']
+categories = ["metadata"]
+license = "GPL-3.0-or-later"
+license_url = "https://www.gnu.org/licenses/gpl-3.0.html"
+long_description = """
+This plugin adds a multi-valued variable (~instruments) containing all the instruments (including vocals), for use in scripts.
+"""

@@ -1,0 +1,4 @@
+"manifest.description" = "This plugin adds a multi-valued variable (~instruments) containing all the instruments (including vocals), for use in scripts."
+"manifest.long_description" = "This plugin adds a multi-valued variable (~instruments) containing all the instruments (including vocals), for use in scripts."
+"manifest.name" = "Instruments"
+"variable.instruments" = "All track instruments and vocals from the `performer:*` tags as a multi-value variable."
